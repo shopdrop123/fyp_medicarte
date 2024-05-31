@@ -71,38 +71,38 @@ const Footer = () => {
           <FooterListTitle title="Follow Us" />
           <ul className="flex flex-col gap-2">
           <p className="text-base w-full xl:w-[80%]">Facebook</p>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+            {/* <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
             facebook.com/medicarte
-            </li>
+            </li> */}
             <p className="text-base w-full xl:w-[80%]">Twitter</p>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+            {/* <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
             twitter.com/medicarte
-            </li>
+            </li> */}
             <p className="text-base w-full xl:w-[80%]">Instagram</p>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+            {/* <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
             instagram.com/medicarte
-            </li>
+            </li> */}
             <p className="text-base w-full xl:w-[80%]">linkedin</p>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+            {/* <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
             linkedin.com/medicarte
-            </li>
+            </li> */}
             
           </ul>
         </div>
         <div>
           <FooterListTitle title="Customer Service:" />
           <ul className="flex flex-col gap-2">
-          <p className="text-base w-full xl:w-[80%]">Email</p>
+          {/* <p className="text-base w-full xl:w-[80%]">Email:support@medicarte.com</p> */}
             <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-            support@medicarte.com
+           Email : support@medicarte.com
             </li>
-            <p className="text-base w-full xl:w-[80%]">Phone</p>
+            {/* <p className="text-base w-full xl:w-[80%]">Phone</p> */}
             <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-            1-800-123-4567
+           Phone : 1-800-123-4567
             </li>
-            <p className="text-base w-full xl:w-[80%]"> Live Chat</p>
+            {/* <p className="text-base w-full xl:w-[80%]"> Live Chat</p> */}
             <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-            Available 24/7
+           Live Chat : Available 24/7
             </li> 
           </ul>
         </div>
