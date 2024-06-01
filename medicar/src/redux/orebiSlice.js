@@ -98,3 +98,4 @@ export const {
   toggleCategory,
 } = medicarte.actions;
 export default medicarte.reducer;
+
