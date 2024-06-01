@@ -3,9 +3,9 @@ import logoLight from "./logoLight.png";
 import bannerImgOne from "./banner/bannerImg.webp";
 import bannerImgTwo from "./banner/bannerImgTwo.webp";
 import bannerImgThree from "./banner/bannerImgThree.webp";
-import saleImgOne from "./sale/saleImgOne.webp";
-import saleImgTwo from "./sale/saleImgTwo.webp";
-import saleImgThree from "./sale/saleImgThree.webp";
+import saleImgOne from "./sale/saleone.webp";
+import saleImgTwo from "./sale/feeder.webp";
+import saleImgThree from "./sale/supplements.png";
 // ============== Products Start here ====================
 import pdf1 from "../pdf/pdf1.pdf";
 // New Arrivals
