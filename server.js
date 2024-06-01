@@ -5,6 +5,9 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.SECRET_KEY)
 const Contact = require("./backend/models/Contact")
 const productRoutes = require("./backend/routes/productRoutes");
+const usersRoutes = require("./backend/routes/usersRouter");
+const authRoutes = require("./backend/routes/authRoutes");
+const categoryRoutes = require("./backend/routes/categoryRoutes");
 const connectDB = require("./backend/config/db");
 
 // Initializing APP
@@ -59,6 +62,9 @@ app.post("/payment", (req, res) => {
 
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/categories", categoryRoutes);
 
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
@@ -77,8 +83,3 @@ if(process.env.NODE_ENV === 'production'){
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("serve at http://localhost:5000"));
-
-// Package .json 
-// "start": "node server.js",
-//     "start:dev": "nodemon server.js",
-//     "data:import": "node backend/seederScript"

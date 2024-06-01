@@ -105,14 +105,11 @@ const ProductInfo = ({ productInfo }) => {
             })
           )
         }
-        className="w-full py-4 bg-blue-500 hover:bg-blue-600 duration-300 text-white text-lg font-titleFont"
+        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-green-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-300 ease-in-out font-titleFont"
       >
         Add to Cart
       </button>
-      <p className="font-normal text-sm">
-        <span className="text-base font-medium"> Categories:</span> Spring
-        collection, Streetwear, Women Tags: featured SKU: N/A
-      </p>
+      
     </div>
   );
 };

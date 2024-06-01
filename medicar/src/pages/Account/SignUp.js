@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { logoLight } from "../../assets/images";
+import { logo } from "../../assets/images";
 
 const SignUp = () => {
   // ============= Initial State Start here =============
@@ -116,7 +116,7 @@ const SignUp = () => {
         zip
       ) {
         setSuccessMsg(
-          `Hello dear ${clientName}, Welcome you to OREBI Admin panel. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+          `Hello dear ${clientName}, Welcome you to MediCarte Pharmacy. We received your Sign up request. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
         );
         setClientName("");
         setEmail("");
@@ -134,7 +134,7 @@ const SignUp = () => {
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
         <div className="w-[450px] h-full bg-primeColor px-10 flex flex-col gap-6 justify-center">
           <Link to="/">
-            <img src={logoLight} alt="logoImg" className="w-28" />
+            <img src={logo} alt="logoImg" className="w-28" />
           </Link>
           <div className="flex flex-col gap-1 -mt-1">
             <h1 className="font-titleFont text-xl font-medium">
@@ -148,11 +148,11 @@ const SignUp = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Get started fast with OREBI
+                Get started fast with MediCarte
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+              Your trusted partner in health and wellness.
+               Subscribe to our newsletter for the latest updates on products
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -161,11 +161,10 @@ const SignUp = () => {
             </span>
             <p className="text-base text-gray-300">
               <span className="text-white font-semibold font-titleFont">
-                Access all OREBI services
+                Access all MediCarte services
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+              MEDICARTE offers a comprehensive suite of healthcare services designed to meet all your medical needs efficiently.
             </p>
           </div>
           <div className="w-[300px] flex items-start gap-3">
@@ -177,13 +176,12 @@ const SignUp = () => {
                 Trusted by online Shoppers
               </span>
               <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab omnis
-              nisi dolor recusandae consectetur!
+            Trusted by our online shoppers worldwide !
             </p>
           </div>
           <div className="flex items-center justify-between mt-10">
             <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
-              © OREBI
+              © MEDICARTE
             </p>
             <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
               Terms
@@ -229,7 +227,7 @@ const SignUp = () => {
                     value={clientName}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="eg. John Doe"
+                    placeholder="eg. MediCarte"
                   />
                   {errClientName && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -241,14 +239,14 @@ const SignUp = () => {
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Work Email
+                    Email
                   </p>
                   <input
                     onChange={handleEmail}
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="Medicarte@email.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -267,7 +265,7 @@ const SignUp = () => {
                     value={phone}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="008801234567891"
+                    placeholder="03003030303"
                   />
                   {errPhone && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -379,7 +377,7 @@ const SignUp = () => {
                     type="checkbox"
                   />
                   <p className="text-sm text-primeColor">
-                    I agree to the OREBI{" "}
+                    I agree to the MediCarte{" "}
                     <span className="text-blue-500">Terms of Service </span>and{" "}
                     <span className="text-blue-500">Privacy Policy</span>.
                   </p>
