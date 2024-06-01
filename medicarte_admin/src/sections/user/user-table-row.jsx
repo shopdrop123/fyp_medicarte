@@ -10,12 +10,11 @@ import Iconify from 'src/components/iconify';
 UserTableRow.propTypes = {
   user: PropTypes.object.isRequired,
   selected: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleEdit: PropTypes.func.isRequired,
 };
 
-export default function UserTableRow({ user, selected, handleClick, handleDelete, handleEdit }) {
+export default function UserTableRow({ user, selected, handleDelete, handleEdit }) {
   const { firstname, lastname, email } = user;
   const [open, setOpen] = useState(null);
 

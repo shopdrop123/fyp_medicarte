@@ -9,12 +9,11 @@ import Iconify from 'src/components/iconify';
 UserTableRow.propTypes = {
   user: PropTypes.object.isRequired,
 
-  handleClick: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleEdit: PropTypes.func.isRequired,
 };
 
-export default function UserTableRow({ user, selected, handleClick, handleDelete, handleEdit }) {
+export default function UserTableRow({ user, handleDelete, handleEdit }) {
   const { firstname, lastname, email, role } = user;
 
   return (
