@@ -273,7 +273,7 @@ const Banner = () => {
       imgSrc: bannerImgOne,
       text: "Expert Care, Anytime",
       Subtext: "24/7 access to medications and health advice.",
-      buttonLink: "/About",
+      buttonLink: "/about",
       buttonText: "About Us",
     },
     {
