@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { FaPlus } from "react-icons/fa";
 import { ImPlus } from "react-icons/im";
 import NavTitle from "./NavTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCategory } from "../../../../redux/orebiSlice";
+import axios from "../../../axios";
 
 const Category = () => {
   const [showSubCatOne, setShowSubCatOne] = useState(false);
@@ -12,25 +13,39 @@ const Category = () => {
     (state) => state.orebiReducer.checkedCategorys
   );
   const dispatch = useDispatch();
+  const [category, setCategories] = useState([]);
 
-  const category = [
-    {
-      _id: 9006,
-      title: "Imprimante",
-    },
-    {
-      _id: 9007,
-      title: "Encre",
-    },
-    {
-      _id: 9008,
-      title: "Ruban",
-    },
-    {
-      _id: 9009,
-      title: "Bac de dechet",
-    },
-  ];
+
+  // const category = [
+  //   {
+  //     _id: 9006,
+  //     title: "Imprimante",
+  //   },
+  //   {
+  //     _id: 9007,
+  //     title: "Encre",
+  //   },
+  //   {
+  //     _id: 9008,
+  //     title: "Ruban",
+  //   },
+  //   {
+  //     _id: 9009,
+  //     title: "Bac de dechet",
+  //   },
+  // ];
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleToggleCategory = (category) => {
     dispatch(toggleCategory(category));
@@ -52,7 +67,7 @@ const Category = () => {
                 checked={checkedCategorys.some((b) => b._id === item._id)}
                 onChange={() => handleToggleCategory(item)}
               />
-              {item.title}
+              {item.categoryName}
               {item.icons && (
                 <span
                   onClick={() => setShowSubCatOne(!showSubCatOne)}
@@ -63,7 +78,7 @@ const Category = () => {
               )}
             </li>
           ))}
-          <li onClick={() => console.log(checkedCategorys)}>test</li>
+          {/* <li onClick={() => console.log(checkedCategorys)}>test</li> */}
         </ul>
       </div>
     </div>

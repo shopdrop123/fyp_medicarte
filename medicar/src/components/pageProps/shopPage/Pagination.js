@@ -1,47 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Product from "../../home/Products/Product";
 import { useSelector } from "react-redux";
-import { paginationItems } from "../../../constants";
+import axios from "../../../components/axios";
+// import { paginationItems } from "../../../constants";
 
-const items = paginationItems;
+// const items = paginationItems;
 
-function Items({ currentItems, selectedBrands, selectedCategories }) {
-  // Filter items based on selected brands and categories
-  const filteredItems = currentItems.filter((item) => {
-    const isBrandSelected =
-      selectedBrands.length === 0 ||
-      selectedBrands.some((brand) => brand.title === item.brand);
-
-    const isCategorySelected =
-      selectedCategories.length === 0 ||
-      selectedCategories.some((category) => category.title === item.cat);
-
-    return isBrandSelected && isCategorySelected;
-  });
-
+function Items({ currentItems }) {
   return (
     <>
-      {filteredItems.map((item) => (
+      {currentItems.map((item) => (
         <div key={item._id} className="w-full">
           <Product
             _id={item._id}
-            img={item.img}
-            productName={item.productName}
-            price={item.price}
-            color={item.color}
-            badge={item.badge}
-            des={item.des}
-            pdf={item.pdf}
-            ficheTech={item.ficheTech}
+            img={item.ProductImage}
+            productName={item.Title}
+            price={item.Price}
+            color="Black" // Assuming color is not in the product object, replace with actual value if exists
+            badge={item.SalePrice !== item.Price}
+            des={item.Description}
           />
         </div>
       ))}
     </>
   );
 }
-
 const Pagination = ({ itemsPerPage }) => {
+  const [items, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('/products');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
   const [itemOffset, setItemOffset] = useState(0);
   const [itemStart, setItemStart] = useState(1);
 
@@ -90,7 +88,7 @@ const Pagination = ({ itemsPerPage }) => {
           Products from {itemStart} to {Math.min(endOffset, items.length)} of{" "}
           {items.length}
         </p>
-        <button onClick={() => console.log(selectedBrands)}> test</button>
+        {/* <button onClick={() => console.log(selectedBrands)}> test</button> */}
       </div>
     </div>
   );
