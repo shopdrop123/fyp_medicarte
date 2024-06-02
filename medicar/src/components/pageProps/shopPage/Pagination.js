@@ -88,7 +88,7 @@ const Pagination = ({ itemsPerPage }) => {
           Products from {itemStart} to {Math.min(endOffset, items.length)} of{" "}
           {items.length}
         </p>
-        <button onClick={() => console.log(selectedBrands)}> test</button>
+        {/* <button onClick={() => console.log(selectedBrands)}> test</button> */}
       </div>
     </div>
   );
