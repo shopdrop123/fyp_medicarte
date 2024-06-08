@@ -48,12 +48,13 @@ export default function Router() {
         { element: <IndexPage />, index: true },
         { path: 'user', element: <UserPage /> },
         { path: 'category', element: <CategoryPage /> },
+        { path: 'products', element: <ProductPage /> },
+        { path: 'orders', element: <OrdersPage /> },
         { path: 'user/edit/:id', element: <EditUserPage /> },
         { path: 'category/edit/:id', element: <EditCategoryPage /> },
-        { path: 'products', element: <ProductPage /> },
         { path: 'products/edit/:id', element: <EditProductPage /> },
-        // { path: 'products/edit/new', element: <EditProductPage /> },
-        // { path: 'products', element: <ProductsPage /> },
+        { path: 'orders/:id', element: <ViewOrderPage /> },
+       
       ],
     },
     {
