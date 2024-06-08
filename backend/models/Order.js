@@ -1,28 +1,26 @@
-const { EntitySchema } = require("typeorm");
+const mongoose = require("mongoose");
 
-module.exports = new EntitySchema({
-  name: "Order",
-  tableName: "orders",
-  columns: {
-    id: {
-      primary: true,
-      type: "int",
-      generated: true
-    },
+const orderSchema = new mongoose.Schema(
+  {
     cart: {
-      type: "json"
+      type: Object, // Using Object for JSON type data
+      required: true,
     },
-    createdAt: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP"
-    }
-  },
-  relations: {
+
     user: {
-      type: "many-to-one",
-      target: "User",
-      joinColumn: true,
-      eager: true
-    }
-  }
-});
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    // total: {
+    //   type: Number,
+    //   required: true,
+    // },
+  },
+  { timestamps: true }
+);
+
+const Order = mongoose.model("Order", orderSchema);
+
+module.exports = Order;
