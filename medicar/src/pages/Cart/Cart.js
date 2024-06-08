@@ -158,6 +158,7 @@ const Cart = () => {
     }
   }, [totalAmt]);
 
+
   const handleCheckout = async () => {
     const userId = localStorage.getItem('medicarte_user_id');
     // if (!userId) {
@@ -179,6 +180,7 @@ const Cart = () => {
       alert('Failed to place order. Please try again.');
     }
   };
+
 
   return (
     <div className="max-w-container mx-auto px-4">

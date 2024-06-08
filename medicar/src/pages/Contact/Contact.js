@@ -148,8 +148,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios"; // Import axios
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
+import axios from "../../components/axios";
 
 const Contact = () => {
   const location = useLocation();

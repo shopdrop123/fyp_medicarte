@@ -21,6 +21,7 @@ const authUser = async (req, res) => {
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log(isPasswordValid)
     if (!isPasswordValid) {
       return res.status(400).json({ type: "WRONG_CREDENTIALS" });
     }
