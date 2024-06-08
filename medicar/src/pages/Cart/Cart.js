@@ -50,11 +50,11 @@ const Cart = () => {
 
           <button
             onClick={() => dispatch(resetCart())}
-            className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
+            className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300"
           >
             Reset cart
           </button>
-
+{/* 
           <div className="flex flex-col mdl:flex-row justify-between border py-4 px-4 items-center gap-2 mdl:gap-0">
             <div className="flex items-center gap-4">
               <input
@@ -67,7 +67,7 @@ const Cart = () => {
               </p>
             </div>
             <p className="text-lg font-semibold">Update Cart</p>
-          </div>
+          </div> */}
           <div className="max-w-7xl gap-4 flex justify-end mt-4">
             <div className="w-96 flex flex-col gap-4">
               <h1 className="text-2xl font-semibold text-right">Cart totals</h1>
