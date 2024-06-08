@@ -8,6 +8,7 @@ const productRoutes = require("./backend/routes/productRoutes");
 const usersRoutes = require("./backend/routes/usersRouter");
 const authRoutes = require("./backend/routes/authRoutes");
 const categoryRoutes = require("./backend/routes/categoryRoutes");
+const orderRoutes = require("./backend/routes/orderRoutes");
 const connectDB = require("./backend/config/db");
 
 // Initializing APP
@@ -65,6 +66,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
+app.use("/api/orders", orderRoutes);
 
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

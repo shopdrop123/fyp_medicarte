@@ -7,11 +7,12 @@ const {
   updateCategory,
   deleteCategory,
 } = require("../controller/categoryController");
+const checkAdminRole = require("../middlewares/checkAdminRole.middleware");
 
 router.get("/", getCategories);
 router.get("/:id", getCategoryById);
-router.post("/create", createCategory);
-router.put("/update/:id", updateCategory);
-router.delete("/delete/:id", deleteCategory);
+router.post("/create",checkAdminRole, createCategory);
+router.put("/update/:id",checkAdminRole, updateCategory);
+router.delete("/delete/:id",checkAdminRole, deleteCategory);
 
 module.exports = router;

@@ -29,6 +29,8 @@ const Cart = () => {
       setShippingCharge(20);
     }
   }, [totalAmt]);
+
+  console.log(products)
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
