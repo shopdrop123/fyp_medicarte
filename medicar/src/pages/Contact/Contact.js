@@ -154,9 +154,9 @@ import axios from "../../components/axios";
 const Contact = () => {
   const location = useLocation();
   const [prevLocation, setPrevLocation] = useState("");
-  useEffect(() => {
-    setPrevLocation(location.state.data);
-  }, [location]);
+  // useEffect(() => {
+  //   setPrevLocation(location.state.data);
+  // }, [location]);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

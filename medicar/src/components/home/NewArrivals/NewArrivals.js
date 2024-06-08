@@ -66,7 +66,9 @@ const NewArrivals = () => {
       {/* <Slider {...settings}> */}
       <div className="flex flex-row justify-start gap-4 flex-wrap ">
       {products.map((product) => (
+
           <div key={product._id} className="px-2 max-w-[335px]">
+
             <Product
               _id={product._id}
               img={product.ProductImage}
