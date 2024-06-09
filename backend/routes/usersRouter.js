@@ -9,10 +9,10 @@ const {
 } = require("../controller/usersControllers");
 const checkAdminRole = require("../middlewares/checkAdminRole.middleware");
 
-router.get("/",checkAdminRole, getUsers);
-router.get("/:id",checkAdminRole, getUserById);
+router.get("/", getUsers);
+router.get("/:id", getUserById);
 router.post("/create", createUser);
-router.put("/update/:id",checkAdminRole, updateUser);
-router.delete("/delete/:id",checkAdminRole, deleteUser);
+router.put("/update/:id", updateUser);
+router.delete("/delete/:id", deleteUser);
 
 module.exports = router;
