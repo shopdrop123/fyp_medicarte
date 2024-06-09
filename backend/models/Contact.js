@@ -21,13 +21,8 @@ const contactSchema = mongoose.Schema({
         type: String,
         required: false,
     },
-    // file: {
-    //     type: Number,
-    //     required: false,
-    // },
 });
 
 const Contact = mongoose.model("contact", contactSchema);
 
 module.exports = Contact;
-

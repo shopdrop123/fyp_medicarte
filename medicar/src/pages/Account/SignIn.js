@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 // import { logoLight } from "../../assets/images";
 import logo from "./medilogo.png";
+import axios from "../../components/axios";
 
 const SignIn = () => {
   // ============= Initial State Start here =============
@@ -16,6 +17,15 @@ const SignIn = () => {
   // ============= Error Msg End here ===================
   const [successMsg, setSuccessMsg] = useState("");
   // ============= Event Handler Start here =============
+  const navigate = useNavigate();
+
+useEffect(() => {
+  if(localStorage.getItem('medicarte_user_token')){
+    navigate('/');
+  }
+}, [])
+
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("");
@@ -25,7 +35,27 @@ const SignIn = () => {
     setErrPassword("");
   };
   // ============= Event Handler End here ===============
-  const handleSignUp = (e) => {
+  // const handleSignUp = (e) => {
+  //   e.preventDefault();
+
+  //   if (!email) {
+  //     setErrEmail("Enter your email");
+  //   }
+
+  //   if (!password) {
+  //     setErrPassword("Create a password");
+  //   }
+  //   // ============== Getting the value ==============
+  //   if (email && password) {
+
+  //     setSuccessMsg(
+  //       `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
+  //     );
+  //     setEmail("");
+  //     setPassword("");
+  //   }
+  // };
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (!email) {
@@ -35,13 +65,29 @@ const SignIn = () => {
     if (!password) {
       setErrPassword("Create a password");
     }
-    // ============== Getting the value ==============
+
     if (email && password) {
-      setSuccessMsg(
-        `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
-      );
-      setEmail("");
-      setPassword("");
+      try {
+        const response = await axios.post('/auth/login', {
+          email: email,
+          password: password,
+        });
+
+        if (response.data.token) {
+          localStorage.setItem('medicarte_user_token', response.data.token);
+          localStorage.setItem('medicarte_user_id', response.data.user.id);
+          // dispatch(setUser(response.data.user));
+
+          navigate('/')
+          setEmail("");
+          setPassword("");
+        } else {
+          setErrEmail("Invalid login credentials");
+        }
+      } catch (error) {
+        console.error('Login failed:', error);
+        setErrEmail("Login failed. Please try again.");
+      }
     }
   };
   return (

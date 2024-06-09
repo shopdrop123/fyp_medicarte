@@ -7,6 +7,7 @@ const {
   updateProduct,
   deleteProduct
 } = require("../controller/productControllers");
+const checkAdminRole = require("../middlewares/checkAdminRole.middleware");
 
 
 router.get("/", getProducts);

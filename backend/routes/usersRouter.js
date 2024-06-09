@@ -7,6 +7,7 @@ const {
   updateUser,
   deleteUser,
 } = require("../controller/usersControllers");
+const checkAdminRole = require("../middlewares/checkAdminRole.middleware");
 
 router.get("/", getUsers);
 router.get("/:id", getUserById);

@@ -17,7 +17,7 @@ function Items({ currentItems }) {
             img={item.ProductImage}
             productName={item.Title}
             price={item.Price}
-            color="Black" // Assuming color is not in the product object, replace with actual value if exists
+           //  color="Black"// Assuming color is not in the product object, replace with actual value if exists
             badge={item.SalePrice !== item.Price}
             des={item.Description}
           />

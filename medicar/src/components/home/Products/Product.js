@@ -15,7 +15,6 @@ const Product = (props) => {
     return String(_id).toLowerCase().split(" ").join("");
   };
   const rootId = idString(_id);
-  const [wishList, setWishList] = useState([]);
   const navigate = useNavigate();
   const productItem = props;
   const handleProductDetails = () => {
@@ -26,11 +25,7 @@ const Product = (props) => {
     });
   };
 
-  const handleWishList = () => {
-    toast.success("Product added to wish list");
-    setWishList([...wishList, props]);
-    console.log(wishList);
-  };
+console.log("props : ", props)
 
   return (
     <div className="w-full relative group">
