@@ -9,9 +9,11 @@ export const IndexPage = lazy(() => import('src/pages/app'));
 // export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const CategoryPage = lazy(() => import('src/pages/category'));
+export const OrderPage = lazy(() => import('src/pages/orders'));
 export const EditCategoryPage = lazy(() => import('src/pages/edit-category'));
 export const ProductPage = lazy(() => import('src/pages/product'));
 export const EditProductPage = lazy(() => import('src/pages/edit-product'));
+export const ViewOrderPage = lazy(() => import('src/pages/view-order'));
 export const LoginPage = lazy(() => import('src/pages/login'));
 // export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
@@ -49,12 +51,13 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'category', element: <CategoryPage /> },
         { path: 'products', element: <ProductPage /> },
-        { path: 'orders', element: <OrdersPage /> },
+
+        { path: 'orders', element: <OrderPage /> },
         { path: 'user/edit/:id', element: <EditUserPage /> },
         { path: 'category/edit/:id', element: <EditCategoryPage /> },
         { path: 'products/edit/:id', element: <EditProductPage /> },
         { path: 'orders/:id', element: <ViewOrderPage /> },
-       
+
       ],
     },
     {

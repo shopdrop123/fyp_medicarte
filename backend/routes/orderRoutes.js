@@ -6,9 +6,9 @@ const checkUserRole = require("../middlewares/checkUserRole.middleware");
 const router = express.Router();
 
 router.post("/", OrderController.createOrder);
-router.get("/",checkAdminRole, OrderController.getAllOrders);
+router.get("/", OrderController.getAllOrders);
 router.get("/:id", OrderController.getOrderById);
-router.delete("/:id",checkAdminRole, OrderController.deleteOrder);
+router.delete("/:id", OrderController.deleteOrder);
 router.get("/user/:userId",checkUserRole, OrderController.getOrdersByUserId);
 
 module.exports = router;

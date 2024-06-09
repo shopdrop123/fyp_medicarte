@@ -33,7 +33,7 @@ const getAllOrders = async (req, res) => {
 const getOrderById = async (req, res) => {
   const { id } = req.params;
   try {
-    const order = await Order.findOne(id);
+    const order = await Order.findById(id);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
@@ -44,9 +44,9 @@ const getOrderById = async (req, res) => {
 };
 
 const deleteOrder = async (req, res) => {
-  const { id } = req.params;
+
   try {
-    const order = await Order.findOne(id);
+    const order = await Order.findById(req.params.id);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }

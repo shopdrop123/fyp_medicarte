@@ -12,8 +12,8 @@ const checkAdminRole = require("../middlewares/checkAdminRole.middleware");
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
-router.post("/create",checkAdminRole, createProduct);
-router.put("/update/:id",checkAdminRole, updateProduct);
-router.delete("/delete/:id",checkAdminRole, deleteProduct);
+router.post("/create", createProduct);
+router.put("/update/:id", updateProduct);
+router.delete("/delete/:id", deleteProduct);
 
 module.exports = router;
