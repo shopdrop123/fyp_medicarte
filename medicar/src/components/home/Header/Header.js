@@ -7,12 +7,13 @@ import { logo, logoLight } from "../../../assets/images";
 import Image from "../../designLayouts/Image";
 import { navBarList } from "../../../constants";
 import Flex from "../../designLayouts/Flex";
+import axios from "../../axios";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [sidenav, setSidenav] = useState(false);
-  const [category, setCategory] = useState(false);
   const [brand, setBrand] = useState(false);
+  const [category, setCategories] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,6 +26,17 @@ const Header = () => {
     };
     ResponsiveMenu();
     window.addEventListener("resize", ResponsiveMenu);
+  }, []);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    };
+    fetchCategories();
   }, []);
   const handleLogout = () => {
     localStorage.removeItem('medicarte_user_token');
@@ -107,7 +119,7 @@ const Header = () => {
                     </ul>
                     <div className="mt-4">
                       <h1
-                        onClick={() => setCategory(!category)}
+                        // onClick={() => setCategory(!category)}
                         className="flex justify-between text-base cursor-pointer items-center font-titleFont mb-2 hover:text-black"
                       >
                         Shop by Category{" "}
@@ -120,21 +132,13 @@ const Header = () => {
                           transition={{ duration: 0.4 }}
                           className="text-sm flex flex-col gap-1"
                         >
+                          {category.map((cate) => (
+
                           <li className="headerSidenavLi hover:bg-gray-200 p-2 rounded-md">
-                            New Arrivals
+                            {cate.categoryName}
                           </li>
-                          <li className="headerSidenavLi hover:bg-gray-200 p-2 rounded-md">
-                            Gadgets
-                          </li>
-                          <li className="headerSidenavLi hover:bg-gray-200 p-2 rounded-md">
-                            Accessories
-                          </li>
-                          <li className="headerSidenavLi hover:bg-gray-200 p-2 rounded-md">
-                            Electronics
-                          </li>
-                          <li className="headerSidenavLi hover:bg-gray-200 p-2 rounded-md">
-                            Others
-                          </li>
+                          ))}
+                          
                         </motion.ul>
                       )}
                     </div>

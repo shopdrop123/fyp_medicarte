@@ -161,14 +161,31 @@
 
 const Product = require('../models/Product');
 
+// const getProducts = async (req, res) => {
+//   try {
+//     const products = await Product.find({}).populate('category_id');
+//     res.json(products);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
 const getProducts = async (req, res) => {
+  const { search } = req.query;
+console.log(search)
   try {
-    const products = await Product.find({}).populate('category_id');
+    let query = {};
+
+    if (search) {
+      query = {"Title":{$regex:search}}
+    }
+
+    const products = await Product.find(query).populate('category_id');
     res.json(products);
   } catch (error) {
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
 
 const getProductById = async (req, res) => {
   try {

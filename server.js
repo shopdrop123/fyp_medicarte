@@ -44,28 +44,29 @@ app.post("/contact", (req, res) => {
 });
 
 // Stripe Integration Route
-app.post("/payment", (req, res) => {
-  // Getting Product details and token from the client side
+app.post("/api/payment", async (req, res) => {
   const { product, token, price } = req.body;
 
-  console.log(`Payment of ${price} is successfully Completed !!!`);
-
-  return stripe.customers
-    .create({
+  try {
+    const customer = await stripe.customers.create({
       email: token.email,
-      source: token.id,
-    })
-    .then((customer) => {
-      stripe.charges.create({
-        amount: price * 100,
-        currency: "INR",
-        customer: customer.id,
-        receipt_email: token.email,
-        description: "Processing Payment",
-      });
-    })
-    .then((result) => res.status(200).json(result))
-    .catch((err) => console.log(err));
+      source: token,
+    });
+
+    const charge = await stripe.charges.create({
+      amount: price * 100,
+      currency: "INR",
+      customer: customer.id,
+      receipt_email: token.email,
+      description: "Processing Payment",
+    });
+
+    console.log(`Payment of ${price} is successfully Completed !!!`);
+    res.status(200).json(charge);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Payment failed" });
+  }
 });
 
 app.use("/api/products", productRoutes);
