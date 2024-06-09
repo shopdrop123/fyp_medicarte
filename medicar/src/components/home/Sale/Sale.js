@@ -205,6 +205,7 @@ const Sale = () => {
             </p>
             <div className="mb-4">
               <ShopNow />
+              
             </div>
           </div>
         </div>

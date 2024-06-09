@@ -1,17 +1,24 @@
+
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
+import axios from "../../components/axios";
+import { toast } from "react-toastify";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
-  const [totalAmt, setTotalAmt] = useState("");
-  const [shippingCharge, setShippingCharge] = useState("");
+  const [totalAmt, setTotalAmt] = useState(0);
+  const [shippingCharge, setShippingCharge] = useState(0);
+  const navigate = useNavigate();
+
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -20,6 +27,7 @@ const Cart = () => {
     });
     setTotalAmt(price);
   }, [products]);
+
   useEffect(() => {
     if (totalAmt <= 200) {
       setShippingCharge(30);
@@ -29,6 +37,39 @@ const Cart = () => {
       setShippingCharge(20);
     }
   }, [totalAmt]);
+
+
+  const handleCheckout = async () => {
+    const userId = localStorage.getItem('medicarte_user_id');
+    if (!userId) {
+      return alert('User ID not found');
+    }
+
+    const orderData = {
+      cart: products,
+      user_id: userId
+    };
+
+    try {
+      const response = await axios.post('/orders', orderData);
+      if(response.status === 201){
+        toast.success("Product added to cart");
+        navigate('/paymentgateway')
+        } else {
+          toast.error("Failed to place order.");
+      }
+      
+
+      // alert('Order placed successfully!');
+      // Optionally reset the cart or redirect the user
+      // dispatch(resetCart());
+    } catch (error) {
+      console.error('Error creating order:', error);
+      alert('Failed to place order. Please try again.');
+    }
+  };
+
+
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
@@ -50,24 +91,10 @@ const Cart = () => {
 
           <button
             onClick={() => dispatch(resetCart())}
-            className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
+            className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300"
           >
             Reset cart
           </button>
-
-          <div className="flex flex-col mdl:flex-row justify-between border py-4 px-4 items-center gap-2 mdl:gap-0">
-            <div className="flex items-center gap-4">
-              <input
-                className="w-44 mdl:w-52 h-8 px-4 border text-primeColor text-sm outline-none border-gray-400"
-                type="text"
-                placeholder="Coupon Number"
-              />
-              <p className="text-sm mdl:text-base font-semibold">
-                Apply Coupon
-              </p>
-            </div>
-            <p className="text-lg font-semibold">Update Cart</p>
-          </div>
           <div className="max-w-7xl gap-4 flex justify-end mt-4">
             <div className="w-96 flex flex-col gap-4">
               <h1 className="text-2xl font-semibold text-right">Cart totals</h1>
@@ -92,11 +119,12 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
-                    Proceed to Checkout
-                  </button>
-                </Link>
+                <button 
+                  onClick={handleCheckout}
+                  className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300"
+                >
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
@@ -124,7 +152,7 @@ const Cart = () => {
             </p>
             <Link to="/shop">
               <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
-                Continue oredring
+                Continue ordering
               </button>
             </Link>
           </div>
